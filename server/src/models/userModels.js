@@ -8,6 +8,11 @@ const User = sequelize.define('User', {
         autoIncrement: true
     },
 
+    nome:{
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
+
     email: {
         type: DataTypes.STRING(255),
         allowNull: false,
@@ -21,12 +26,6 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING(255),
         allowNull: false
     },
-
-    telefone: {
-        type: DataTypes.STRING(20),
-        allowNull: true
-    }
-
 });
 
 const Categoria = sequelize.define('Categoria', {
@@ -47,6 +46,27 @@ const Categoria = sequelize.define('Categoria', {
     }
 });
 
+const Ocorrencia = sequelize.define('Ocorrencia', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
 
+    titulo: {
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
 
-module.exports = { User, Categoria };
+    descricao: {
+        type: DataTypes.STRING(255),
+        allowNull: true
+    },
+
+    data_ocorrencia: {
+        type: DataTypes.DATE,
+        allowNull: false
+    }
+});
+
+module.exports = { User, Categoria, Ocorrencia };

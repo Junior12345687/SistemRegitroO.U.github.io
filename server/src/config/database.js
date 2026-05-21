@@ -1,15 +1,14 @@
-const sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-const sequelize = new sequelize({
-    database: process.env.DB.NAME || 'registry_ocorrenc',
-    username: process.env.DB.USER || 'root',
-    password: process.env.DB.PASSWORD || '',
-    host: process.env.DB.HOST || 'localhost',
+const sequelize = new Sequelize({
+    database: process.env.DB_NAME || 'registry_ocorrenc',
+    username: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    host: process.env.DB_HOST || 'localhost',
     dialect: 'mysql',
     logging: false,
 });
-
 
 (async () => {
     try {
@@ -18,5 +17,6 @@ const sequelize = new sequelize({
     } catch (error) {
         console.error('Não foi possível conectar ao banco de dados:', error);
     }
-})
+})();
+
 module.exports = sequelize;
