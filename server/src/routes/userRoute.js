@@ -4,8 +4,7 @@ const userControlle = require('../controllers/userControlle');
 
 console.log('Conectando rota de usuário...', userControlle);
 
-router.get('/login', userControlle.getLogin);
-router.get('/api/user', userControlle.getUser);
-router.post('/api/user', userControlle.postUser);
+router.get('/login', userControlle.getUser);
+router.post('/user', userControlle.postUser);
 
 module.exports = router;
