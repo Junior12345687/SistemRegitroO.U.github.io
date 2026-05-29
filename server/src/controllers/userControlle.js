@@ -1,22 +1,38 @@
+const bcrypt = require("bcrypt");
 const {User, Categoria} = require('../models/userModels');
 
 const getLogin = async (req, res) => {
     res.render('login', {error: null});
 };
 
-const getUser = async (req, res) => {
+const getCadastro = async (req, res) => {
+    res.render('cadastro', {error: null});
+};
+
+const getTela = async(req, res) => {
+    res.render('tela', {error: null});
+}
+
+const postLogin = async (req, res) => {
     try {
         const {nome, password} = req.body;
         if(!nome || !password){
-            return res.status(400).render('login', {error: "Nome e senha são obrigatórios"});
+            return res.status(400).render('login', {error: "Nome e senha são obrigatórios !"});
         }
 
-        const user = await User.findOne({ where: { nome, password } });
+        const user = await User.findOne({ where: { nome} });
+
         if (!user) {
-            return res.status(404).render('login', {error: "Usuario nao encontrado "});
+            return res.status(404).render('login', {error: "Usuario nao encontrado !"});
         }
 
-        res.render('/dashboard');
+        const senhaValida = await bcrypt.compare(password, user.password);
+
+        if(!senhaValida){
+            return res.status(401).render('login', {error: "Senha incorreta !"});
+        }
+
+        return res.redirect('/tela');
 
     } catch (error) {
         console.error('Erro ao buscar usuário:', error);
@@ -26,8 +42,9 @@ const getUser = async (req, res) => {
 
 const postUser = async (req, res) => {
     try {
-        const {id, nome, email, password} = req.body;
+        const {nome, email, password} = req.body;
         if(!nome || !email || !password){
+            console.log(email, nome, password);
             return res.status(400).render('cadastro', {error: "Nome, email e senha são obrigatórios"});
         }
 
@@ -36,12 +53,20 @@ const postUser = async (req, res) => {
             return res.status(409).render('cadastro', {error: "Email já cadastrado"});
         }
 
-        const newuser = await User.create({id, nome, email, password});
-        res.status(201).render('login', {error: "Usuario criado com sucesso, faça login"});
+        const hashedPassword = await bcrypt.hash(password, 10);
+        
+        const newUser = await User.create({
+            nome: nome,
+            email:email,
+            password: hashedPassword
+        });
+
+        console.log(`Usuario criado com ID ${newUser.id}`);
+        res.redirect('/login?sucess=1');
 
     } catch (error) {
         console.error( error);
-        res.status(500).render('cadastro', {error: "Error ao criar usuario"});
+        return res.status(500).render('cadastro', {error: "Error ao criar usuario"});
     }
 };
-module.exports = {getLogin, getUser, postUser};
+module.exports = {getLogin, getCadastro, getTela ,postLogin, postUser};

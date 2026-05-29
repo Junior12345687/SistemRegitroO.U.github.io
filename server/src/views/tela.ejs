@@ -66,9 +66,383 @@
             overflow: hidden;
             transition: transform 0.2s ease;
         }
+
+        .card-header {
+            background: #1e3a5f;
+            padding: 1.2rem 2rem;
+            color: white;
+        }
+
+        .card-header {
+            font-weight: 600;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-header h2 {
+            font-weight: 600;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-header h2 i {
+            font-size: 1.7rem;
+        }
+
+        .card-header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+            margin-top: 6px;
+        }
+
+        .form-body {
+            padding: 2rem 2rem 2rem 2rem;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2 , 1fr);
+            gap: 1.5rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label{
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1e466e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group label i {
+            width: 20px;
+            color: #f39c12;
+        }
+
+        .required:after {
+            content: "*";
+            color: #e74c3c;
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            padding: 12px 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            background-color: #fefefe;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2c6e9e;
+            box-shadow: 0 0 0 3px rgba(44, 110, 158, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .preview-area {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .image-preview {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            display: none;
+        }
+
+        .file-info {
+            font-size: 0.8rem;
+            color: #4b5563;
+        }
+
+        .btn-remove-img {
+            background: #fee2e2;
+            border: none;
+            border-radius: 40px;
+            padding: 6px 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: #b91c1c;
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .urgency-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+
+        .urgency-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f1f5f9;
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .urgency-option input {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #64748b;
+            margin: 0;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .urgency-option input:checked {
+            border-color: #e67e22;
+            background-color: #e67e22;
+            box-shadow: inset 0 0 0 3px white;
+        }
+
+        .urgency-option.selected {
+            background: #fff1e6;
+            border-color: #e67e22;
+        }
+
+        .urgency-label {
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .form-actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: #1e3a5f;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .btn-primary:hover {
+            background: #0f2c47;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #eef2f6;
+            color: #2c3e50;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        .message-area {
+            margin-bottom: 1.2rem;
+            padding: 12px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .message-success {
+            background: #e0f2e9;
+            color: #1e6f3f;
+            border-left: 5px solid #2ecc71;
+        }
+
+        .message-error {
+            background: #ffe6e5;
+            color: #c0392b;
+            border-left: 5px solid #e74c3c;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #4a627a;
+        }
+
+        @media (max-width: 700px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+            .form-body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-city"></i>Registro de Ocorrências Urbanas </h1>
+            <div class="sub"><i class="fas fa-map-marker-alt"></i> Suas Ocorrencias</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2><i class="fas fa-clipboard-list"></i> Nova Ocorrência</h2>
+                <p>Preencha os dados abaixo para reportar problemas urbanas. Sua solicitação séra encaminhada à secretaria responsável.</p>
+            </div>
+            <div class="form-body">
+                <form id="occurrenceForm" action="/Ocorrencia" method="POST" enctype="multipart/form-data">
+                    <div id="occurrenceForm" action="/Categoria" method="POST" enctype="multipar/form-data">
+                        <div class="form-grid">
+                            <div class="form-grup">
+                                <label><i class="fas fa-exclamation-triangle"></i> <span class="required">Tipo de ocorrencia</span></label>
+                                <select name="tipo" id="tipo" required>
+                                    <option value="" disabled selected>Selecione o tipo</option>
+                                    <option value="Iluminção pública">💡 Iluminação Publica</option>
+                                    <option value="Buraco na via">🕳️ Buraco na via/ pavimentação</option>
+                                    <option value="Coleta de Lixo">🗑️ Coleta de Lixo</option>
+                                    <option value="Áreas verdes">🌿 Poda/ áreas verdes</option>
+                                    <option value="Pichação">Pichação/Vandalismo</option>
+                                    <option value="Agua">💧 Vazamneto de Agua</option>
+                                    <option value="Sinalização">🚦 Sinalização danificada</option>
+                                    <option value="Outros">📌 Outros</option>
+                                </select>
+                            </div>
+
+                            <div class="form-grup" action="">
+                                <label><i class="fas fa-gauge-hig"></i>Nivel de Urgencia</label>
+                                <div class="urgency-option" id="urgecyGroup">
+                                    <label class="urgency-option" data-value="Baixa">
+                                        <input type="radio" name="urgencia" value="Baixa"><span>🟢 Baixa</span>
+                                    </label>
+
+                                    <label class="urgency-option" data-value="Media">
+                                        <input type="radio" name="urgencia" value="Media"><span>🟠 Média</span>
+                                    </label>
+
+                                    <label class="urgency-option" data-value="Alta">
+                                        <input type="radio" name="urgencia" value="Alta"><span>🔴 Alta</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label><i class="fas fa-location-dot"></i>
+                                    <span class="required">Endereço / Localização</span>
+                                </label>
+                                <input type="text" name="endereco" id="endereco" placeholder="Rua, numero, bairro, ponto de referência" required>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label><i class="fas fa-location-dot"></i>
+                                    <span class="require">Descrição completa</span>
+                                </label>
+                                <textarea name="descricao" id="descrica" placeholder="Descrever o problema com o máximo de detalhes possível!"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="far fa-calendar-alt">Data e hora da ocorrência</i></label>
+                                <input type="datetime-local" name="data_hora" id="dataHora">
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fas fa-phone-alt"></i>Contato (opcional)</label>
+                                <input type="text" name="contato" placeholder="Email ou telefone para retorno">
+                            </div>
+
+                            <div class="form-group full-width" action="/anexo" method="POST">
+                                <label><i class="fas fa-camera"></i>Foto/evidencia</label>
+                                <input type="file" id="fotoOcorencia" name="evidencia" accept="image/jpeg, image/png, image/jpg">
+                            </div>
+
+                            <div class="preview-arear">
+                                <img id="imPreview" class="image-priview" alt="pré-visualização">
+                                <button type="button" id="removeImageBtn" class="btn-remove-img">
+                                    <i class="fas fa-trash-alt"></i>Remover imagem</button>
+                                    <span class="file-info">Formatos: JPG, PNG(max 8MB)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-eraser"></i>
+                            Limpar os campos
+                        </button>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                                Resgistrar ocorrência
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <i class="fas fa-shield-alt"></i>
+            Sistema de Registro de Ocorrências Urbanas • Sua denúncia ajuda a construir uma cidade mais segura e humana
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+        })();
+    </script>
     
 </body>
 </html>

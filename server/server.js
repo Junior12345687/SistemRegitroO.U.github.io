@@ -4,9 +4,12 @@ const sequelize = require('./src/config/database');
 const userRoutes = require('./src/routes/userRoute');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
 
 dotenv.config();
 const app = express();
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
