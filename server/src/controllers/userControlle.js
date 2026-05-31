@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const {User, Categoria} = require('../models/userModels');
 
 const getLogin = async (req, res) => {
+
     res.render('login', {error: null});
 };
 
@@ -10,10 +11,14 @@ const getCadastro = async (req, res) => {
 };
 
 const getTela = async(req, res) => {
+
+    console.log('🔵 Rota /tela foi acessada');
     res.render('tela', {error: null});
+    
 }
 
 const postLogin = async (req, res) => {
+
     try {
         const {nome, password} = req.body;
         if(!nome || !password){
@@ -32,6 +37,7 @@ const postLogin = async (req, res) => {
             return res.status(401).render('login', {error: "Senha incorreta !"});
         }
 
+        console.log('redirecionamento para tela');
         return res.redirect('/tela');
 
     } catch (error) {
@@ -41,6 +47,7 @@ const postLogin = async (req, res) => {
 };
 
 const postUser = async (req, res) => {
+
     try {
         const {nome, email, password} = req.body;
         if(!nome || !email || !password){

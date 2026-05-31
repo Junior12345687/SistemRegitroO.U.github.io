@@ -20,7 +20,7 @@ const User = sequelize.define('User', {
         validate: {
             isEmail: true
         },
-        unique: true
+        // unique: true
     },
 
     password: {

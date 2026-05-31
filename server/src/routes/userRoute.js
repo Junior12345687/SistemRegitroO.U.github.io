@@ -9,7 +9,7 @@ console.log('Conectando rota de usuário...', userControlle);
 router.get('/login', userControlle.getLogin);
 router.get('/cadastro', userControlle.getCadastro);
 router.get('/tela', userControlle.getTela);
-router.post('/login', userControlle.postLogin);
+router.post('/tela', userControlle.postLogin);
 router.post('/user', userControlle.postUser);
 
 module.exports = router;

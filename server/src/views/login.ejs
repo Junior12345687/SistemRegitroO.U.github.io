@@ -4,19 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e9f0f5 0%, #d9e2ec 100%);
+            font-family: 'Inter',  sans-serif;
+            padding: 2rem 1rem;
+            color: #1e2a3e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            transition: none;
+        }
+
+        .header{
+            text-align: center;
+            margin: 2rem;
+        }
+
+        .header h1{
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e466e, #1e2a3e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header h1 i{
+            background: none;
+            color: #2c6e9e;
+            font-size: 2rem;
+        }
+
+        .error-message {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+            color: #b91c1c;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .error-message::before{
+            content: "⚠️";
+            font-size: 16px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input{
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+            button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .register-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .register-link a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+            
+            input, button {
+                padding: 10px 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <% if (error){ %>
-        <div style="color: red;"><%= error %></div>
-    <% } %>
-    <form action="/login" method="GET">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required>
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit">Login</button>
-    </form>
-    <br>
-    <a href="/cadastro">Não tem conta? Faça seu cadastro</a>
+    <div class="card">
+        <div class="header">
+            <h1><i class="fas fa-city"></i>Registro de Ocorrência Urbanas</h1>
+        </div>
+        <form action="/tela" method="POST">
+
+            <div class="input-group">
+                <label for="nome">Login:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+
+            <div class="input-group">
+                 <label for="password">Senha:</label>
+                 <input type="password" id="password" name="password" required>
+            </div>
+           
+            <button type="submit">Login</button>
+        </form>
+        <br>
+        <a href="/cadastro">Não tem conta? Faça seu cadastro</a>
+        <% if (error){ %>
+            <div style="color: red;"><%= error %></div>
+        <% } %>
+    </div>
 </body>
 </html>
